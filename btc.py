@@ -40,7 +40,7 @@ def load_image(path_str):
 
 
 my_prompt_25 = """
-Merge image 1 and image 2 into one image
+Ghép chữ vào hình ảnh tạo 1 banner quảng cáo.
 """
 
 p25 = r"1.png"

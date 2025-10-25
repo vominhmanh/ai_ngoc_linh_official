@@ -27,7 +27,13 @@ Generate an adorable and whimsical horse character, celebrating Tet 2026. The ho
 Output only horse object, no text, no background.
 """
 PROMPT1 = """
-Generate image of text : "Nuôi linh vật nhỏ - Tiền lớn bất ngờ" with white backround
+Generate a vibrant and festive banner image, with a 16:9 aspect ratio, for a banking savings campaign celebrating Tet 2026. The banner should prominently feature an adorable and whimsical horse character. This charming and lovable horse should be integrated with traditional Vietnamese Lunar New Year elements such as delicate cherry blossoms, lush kumquat trees, or cheerful lucky money envelopes (li xi). The overall design should emphasize a prosperous and joyful atmosphere, radiating good fortune and happiness. The art style should be vibrant, friendly, and visually appealing, designed to capture attention and convey a sense of hope and financial well-being.
+"""
+PROMPT1 = """
+Create for me a Tet banner image without text, only images, bright colors with peach and apricot blossom images, the middle part is blank so I can insert the image later
+"""
+PROMPT1 = """
+Generate a heartwarming video scene depicting a Vietnamese family gathering during Tet (Lunar New Year). The scene should feature an adorable 6-year-old child receiving a lucky money envelope (li xi) from their grandparents, who are beaming with affection. Immediately after, the child, with a bright smile, turns to their mother, who is seated beside them, and hands her the li xi. As the child gives the envelope to the mother, they playfully say, 'Mom, please help me raise the horse on the Techcombank app!' The overall atmosphere should be joyful, loving, and capture the essence of family togetherness and prosperity during Tet. The video should clearly show the interactions and expressions of the family members.
 """
 
 # ==================== IMAGE GENERATION (Gemini) ====================
@@ -54,7 +60,6 @@ def generate_image_chat(
     }
 
     response = requests.post(url, headers=headers, json=payload, timeout=180)
-    print(response.json())
     response.raise_for_status()
 
     data = response.json()
@@ -72,7 +77,6 @@ def generate_image_chat(
     temp_path = f"generated_chat_image_{int(time.time())}.png"
     with open(temp_path, "wb") as f:
         f.write(image_data)
-    print(temp_path)
     return temp_path, "✅ Image generated successfully!"
 
 print(generate_image_chat(PROMPT1))
